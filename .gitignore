@@ -56,3 +56,7 @@ pip-delete-this-directory.txt
 .venv
 venv/
 ENV/
+
+# Ignore videos
+samples/*.mp4
+samples/*.avi
