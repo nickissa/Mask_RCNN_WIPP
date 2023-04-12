@@ -84,7 +84,21 @@ class CocoConfig(Config):
     # GPU_COUNT = 8
 
     # Number of classes (including background)
-    NUM_CLASSES = 1 + 80  # COCO has 80 classes
+    NUM_CLASSES = 1 + 80  # COCO has 80 classes                                 I CHANGED THIS FROM 1 + 80 TO 1 + 45 FOR ARC CLASSES!!!!!! - Nick
+
+# class DefaultCocoConfig(Config):
+#     # Give the configuration a recognizable name
+#     NAME = "coco"
+
+#     # We use a GPU with 12GB memory, which can fit two images.
+#     # Adjust down if you use a smaller GPU.
+#     IMAGES_PER_GPU = 2
+
+#     # Uncomment to train on 8 GPUs (default is 1)
+#     # GPU_COUNT = 8
+
+#     # Number of classes (including background)
+#     NUM_CLASSES = 1 + 80  # COCO has 80 classes
 
 
 ############################################################
