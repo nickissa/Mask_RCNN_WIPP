@@ -282,4 +282,5 @@ dependencies:
       - wget==3.2
       - widgetsnbextension==4.0.5
       - wrapt==1.15.0
-prefix: /home/robotics/anaconda3/envs/maskrcnn
+prefix: /app/anaconda3/envs/maskrcnn
+
