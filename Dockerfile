@@ -4,9 +4,13 @@
 # FROM pengchuanzhang/pengchuanzhang/maskrcnn:latest
 FROM python:3.9.16
 
+# Create working directory to be /app/MASK_RCNN
 WORKDIR /app
 RUN mkdir MASK_RCNN
 WORKDIR /app/MASK_RCNN
+
+# Default Environmental Variables
+ENV ROOTDIR="/app/MASK_RCNN/"
 
 COPY . /app/MASK_RCNN
 

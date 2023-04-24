@@ -9,9 +9,13 @@ import matplotlib.pyplot as plt
 import cv2
 import time
 
-# Root directory of the project
-ROOT_DIR = os.path.abspath("../")
-print("Root Dir:", ROOT_DIR)
+# Check if root directory of the project is an environment variable or not
+if os.getenv('ROOTDIR'):
+    ROOT_DIR = os.getenv('ROOTDIR')
+    print("Root Dir:", ROOT_DIR)
+else:
+    ROOT_DIR = os.path.abspath("../")
+    print("Root Dir:", ROOT_DIR)
 
 # Import Mask RCNN
 sys.path.append(ROOT_DIR)  # To find local version of the library
