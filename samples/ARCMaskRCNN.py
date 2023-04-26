@@ -44,7 +44,7 @@ class InferenceConfig(coco.CocoConfig):
     # one image at a time. Batch size = GPU_COUNT * IMAGES_PER_GPU
     GPU_COUNT = 1
     IMAGES_PER_GPU = 1
-    NUM_CLASSES = 1 + 45
+    # NUM_CLASSES = 1 + 45
 
 config = InferenceConfig()
 config.display()
@@ -53,8 +53,7 @@ config.display()
 model = modellib.MaskRCNN(mode="inference", model_dir=MODEL_DIR, config=config)
 
 # Load weights trained on MS-COCO
-#model.load_weights(COCO_MODEL_PATH, by_name=True)
-model.load_weights(COCO_MODEL_PATH, by_name=True, exclude=["mrcnn_class_logits", "mrcnn_bbox_fc", "mrcnn_bbox", "mrcnn_mask"])
+model.load_weights(COCO_MODEL_PATH, by_name=True) #exclude=["mrcnn_class_logits", "mrcnn_bbox_fc", "mrcnn_bbox", "mrcnn_mask"]
 
 # COCO Class names
 # Index of the class in the list is its ID. For example, to get ID of
@@ -123,7 +122,9 @@ def display_instances(image, boxes, masks, ids, names, scores):
 
 # Define a video capture object
 #vid = cv2.VideoCapture(0)              # real-time webcam
-vid = cv2.VideoCapture('videofile2.mp4') # pre-recorded video
+#vid = cv2.VideoCapture('videofile2.mp4') # pre-recorded video
+vid = cv2.VideoCapture('GabeHibaVid.mp4') # pre-recorded video
+
 
 size = (
     int(vid.get(cv2.CAP_PROP_FRAME_WIDTH)),
@@ -131,11 +132,11 @@ size = (
 )
 
 codec = cv2.VideoWriter_fourcc(*'DIVX')
-output = cv2.VideoWriter('testfile3_masked_30fps.avi', codec, 30.0, size)
+output = cv2.VideoWriter('GabeHibaMasked.avi', codec, 30.0, size)
 
 # these 2 lines can be removed if you dont have a 1080p camera.
-#vid.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
-#vid.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
+vid.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+vid.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
 colors = random_colors(len(class_names))
 class_dict = {
@@ -155,10 +156,11 @@ while(True):
     
     # Visualize results
     r = results[0]
-    frame = display_instances(frame, r['rois'], r['masks'], r['class_ids'], class_names, r['scores'])
+    # frame = display_instances(frame, r['rois'], r['masks'], r['class_ids'], class_names, r['scores'])
+    resframe = display_instances(frame, r['rois'], r['masks'], r['class_ids'], class_names, r['scores'])
     
-    output.write(frame)
-    cv2.imshow('Frame', frame)
+    output.write(resframe)
+    cv2.imshow('Frame', resframe)
     
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
