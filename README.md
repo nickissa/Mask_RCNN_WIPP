@@ -1,6 +1,6 @@
 # Waste Isolation Pilot Plant Automatic Object and Closure Identification Using Mask R-CNN on Tensorflow 2
 
-# TODO:
+## TO DO:
 1. Get to work with GPU.
 2. Create fully functioning Docker image that hosts to 8888 and uses jupyter notebook to run code on docker image.
 3. Detect salt creep and average amount of crack growth each day in WIPP.
