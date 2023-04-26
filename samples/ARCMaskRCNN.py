@@ -12,7 +12,7 @@ import time
 # Check if root directory of the project is an environment variable or not
 if os.getenv('ROOTDIR'):
     ROOT_DIR = os.getenv('ROOTDIR')
-    print("Root Dir:", ROOT_DIR)
+    print("Environment Root Dir:", ROOT_DIR)
 else:
     ROOT_DIR = os.path.abspath("../")
     print("Root Dir:", ROOT_DIR)
@@ -122,8 +122,8 @@ def display_instances(image, boxes, masks, ids, names, scores):
     return image
 
 # Define a video capture object
-vid = cv2.VideoCapture(0)              # real-time webcam
-#vid = cv2.VideoCapture('videofile2.mp4') # pre-recorded video
+#vid = cv2.VideoCapture(0)              # real-time webcam
+vid = cv2.VideoCapture('videofile2.mp4') # pre-recorded video
 
 size = (
     int(vid.get(cv2.CAP_PROP_FRAME_WIDTH)),

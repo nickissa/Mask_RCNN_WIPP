@@ -44,4 +44,4 @@ RUN source activate maskrcnn
 
 # Run ARCMaskRCNN.py when container is run
 # Curr DIR is /app/MASK_RCNN
-CMD ["python", "/app/MASK_RCNN/samples/ARCMaskRCNN.py"]
+CMD ["conda", "run", "-n", "maskrcnn", "python", "/app/MASK_RCNN/samples/ARCMaskRCNN.py"]
